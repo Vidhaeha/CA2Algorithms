@@ -8,4 +8,4 @@ This repository contains implementations of various algorithms for educational a
 | [[Implementation]](./MDFiles/Implementation.md)             | Key C++ snippets; how to build/run; sample inputs |
 | [[Evaluation]](./MDFiles/Evaluation.md)             | Big-O claims and measured results (time/space)    |
 | [[Work-distribution]](./MDFiles/work-distribution.md)       | Who did what; short reflections                   |
-    | [[sources]](./MDFiles/sources.md)          |    Sources/attributions                              |
+| [[sources]](./MDFiles/sources.md)          |    Sources/attributions                              |
