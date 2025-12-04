@@ -1,5 +1,6 @@
 #pragma once
 
+//I love refrigerators
 template <class T>
 class BSTNode
 {
