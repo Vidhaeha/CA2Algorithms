@@ -1,4 +1,75 @@
 Main
+1. Data Setup
+
+An array of Zombie objects is created, each with a danger level and a type.
+
+Zombies are added to:
+
+Binary Search Tree (BST) – to allow fast, ordered searches.
+
+Linear array (vector) – to illustrate simple linear search.
+
+HashMap (unordered_map) – for constant-time average lookup.
+
+2. BST Operations
+
+Insertion (tree.add): Adds each zombie in the BST, keeping the binary search property (left < node < right).
+
+Search (printZombieTypeByDanger): Traverses the BST to find a zombie by dangerLevel. This demonstrates O(log n) average-time search.
+
+Remove (tree.remove): Deletes a node from the BST, handling three cases:
+
+Node with no children (leaf)
+
+Node with one child
+
+Node with two children (replaces with in-order successor)
+
+Balance (balanceBST): Converts the BST into a balanced BST to ensure efficient future searches.
+
+Display (displayTree): Shows the tree sideways with indentation, representing depth visually.
+
+3. Linear Array Operations
+
+Search: Iterates over the array to find the zombie with the target danger level.
+
+Counts the number of steps to find the target.
+
+Demonstrates O(n) time complexity.
+
+Delete: Finds the zombie and removes it using vector::erase.
+
+Re-add: Adds the deleted zombie back to maintain data integrity.
+
+4. HashMap Operations
+
+Search: Uses unordered_map::find to locate the zombie by danger level.
+
+Average time complexity O(1).
+
+Delete: Removes the zombie using unordered_map::erase.
+
+Re-add: Restores the deleted zombie using operator[].
+
+5. Timing
+
+All searches and delete operations are timed using std::chrono in microseconds, showing the efficiency difference between:
+
+BST – logarithmic time
+
+Linear array – linear time
+
+HashMap – constant average time
+
+6. Purpose
+
+Compare search efficiency across data structures.
+
+Demonstrate deletion and re-insertion in BST, array, and hashmap.
+
+Show how balancing a BST improves search performance.
+
+Visually represent the tree structure for easier understanding.
 
 <img width="550" height="442" alt="image" src="https://github.com/user-attachments/assets/ec201b27-67cb-4bdb-a017-bf4102855e87" />
 
