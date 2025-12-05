@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "BinaryTree.h"
 #include "Utils.h"
 #include "Zombie.h"
@@ -7,8 +8,8 @@ using namespace std;
 int main()
 {
     BinaryTree<Zombie> tree;
+    vector<Zombie> linearList;
 
-	// Sample zombies with various danger levels
     Zombie zombies[] = {
         {880,  "Hive-mind necro leader"},
         {920,  "Berserker juggernaut"},
@@ -22,7 +23,7 @@ int main()
         {800, "Infection thrower — spreads plague clouds"},
         {260, "Grocery-store bargainer zombie"},
         {310, "Fast teen runner zombie"},
-        //{400, "Corner-lurking ambush zombie"},
+        {400, "Corner-lurking ambush zombie"},
         {450, "Pack hunter — calls others over"},
         {500, "Screaming sprint zombie"},
         {20,  "Limb-dragging crawler"},
@@ -32,35 +33,42 @@ int main()
         {180, "Missing-jaw groaner that can’t bite properly"}
     };
 
-    cout << "\n=== B.R.A.I.N.S. ===\n";
-    cout << "Binary Search Tree of Zombie Danger Levels\n";
+    // Add zombies manually
+    for (Zombie z : zombies)
+    {
+        tree.add(z);         // BST
+        linearList.push_back(z); // Linear array
+    }
 
-	// Add zombies to the tree
-    for (Zombie z : zombies) tree.add(z);
-
-	// Display tree before balancing
-    cout << "\n=== Zombies In-Order ===\n";
+    cout << "\n=== Zombies In-Order (BST) ===\n";
     tree.printInOrder();
-	balanceBST(tree);
     displayTree(tree);
 
-    // Add more manually as needed
-    tree.add(Zombie(400, "Corner-lurking ambush zombie"));
-    balanceBST(tree);
-    displayTree(tree);
-
-
-	// Test finding zombies by danger level
     printZombieTypeByDanger(tree, 700);
 
+    // Manual comparison search
+    int target = 700;
+    cout << "\nSearching in linear array...\n";
+    int steps = 0;
+    bool found = false;
+    for (Zombie z : linearList)
+    {
+        steps++;
+        if (z.dangerLevel == target)
+        {
+            cout << "Found zombie: " << z.type << " in " << steps << " steps.\n";
+            found = true;
+            break;
+        }
+    }
+    if (!found)
+        cout << "Zombie not found in linear array.\n";
 
-	// Test removing a zombie
-    cout << "\nRemoving danger 20...\n";
+    cout << "\nRemoving danger 20 from BST...\n";
     tree.remove(Zombie(20, ""));
     displayTree(tree);
 
-	// Re-balance after removal
-    cout << "\nBalancing tree...\n";
+    cout << "\nBalancing BST...\n";
     balanceBST(tree);
     displayTree(tree);
 
