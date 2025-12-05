@@ -32,3 +32,20 @@ Quickly find the highest or lowest price
 Add new products or remove old ones
 
 Keep everything sorted as prices change
+
+## 🧟‍♂️ Zombie Survival Radar System(Framing The Problem)
+
+You’re in charge of a post-apocalyptic safe zone.
+A radar scans the wasteland and detects zombies approaching from far away.
+
+Each zombie sighting has a danger score:
+
+10 → Slow crawler missing a leg
+
+200 → Average walker
+
+500 → Hungry sprinting zombie
+
+900 → Screaming mutated nightmare
+
+The higher the score, the more dangerous it is.
