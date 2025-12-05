@@ -32,6 +32,9 @@ int main()
 
     for (Zombie z : zombies) tree.add(z);
 
+
+    cout << "\n=== B.R.A.I.N.S. ===\n";
+
     cout << "\n=== Zombies In-Order ===\n";
     tree.printInOrder();
 
@@ -40,16 +43,18 @@ int main()
 
     displayTree(tree);
 
+    // Search by danger and print type
     int searchDanger = 700;
-    BSTNode<Zombie>* found = findNode(tree.root, searchDanger);
+    printZombieTypeByDanger(tree, searchDanger);
 
-    if (found)
-        cout << "\nFound zombie with danger " << found->getItem().dangerLevel << endl;
-    else
-        cout << "\nZombie not found\n";
+    cout << "\nRemoving danger 700...\n";
+    tree.remove(Zombie(700, ""));
 
-    cout << "\nRemoving danger 20...\n";
-    tree.remove(Zombie(20, ""));
+	// Display tree before and after balancing
+	cout << "\nTree before and after balancing:\n";
+    displayTree(tree);
+    // Balance tree
+    balanceBST(tree);
     displayTree(tree);
 
     return 0;

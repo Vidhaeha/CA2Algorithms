@@ -17,26 +17,36 @@ struct Zombie
     bool operator>(const Zombie& other) const { return dangerLevel > other.dangerLevel; }
     bool operator==(const Zombie& other) const { return dangerLevel == other.dangerLevel; }
 
-    // Only print danger level
+    // For normal printing: danger level only
     friend ostream& operator<<(ostream& os, const Zombie& z) { os << z.dangerLevel; return os; }
 };
 
-// FIND NODE IN BST
+// FIND NODE BY DANGER LEVEL
 template<class T>
-BSTNode<T>* findNode(BSTNode<T>* node, int dangerLevel)
+BSTNode<T>* findNodeByDanger(BSTNode<T>* node, int danger)
 {
     if (!node) return nullptr;
 
-    if (node->getItem().dangerLevel == dangerLevel)
+    if (node->getItem().dangerLevel == danger)
         return node;
-    else if (dangerLevel < node->getItem().dangerLevel)
-        return findNode(node->getLeft(), dangerLevel);
+    else if (danger < node->getItem().dangerLevel)
+        return findNodeByDanger(node->getLeft(), danger);
     else
-        return findNode(node->getRight(), dangerLevel);
+        return findNodeByDanger(node->getRight(), danger);
 }
 
-// DISPLAY TREE (SIDEWAYS)
+// DISPLAY ZOMBIE TYPE BY DANGER
+template<class T>
+void printZombieTypeByDanger(BinaryTree<T>& tree, int danger)
+{
+    BSTNode<T>* found = findNodeByDanger(tree.root, danger);
+    if (found)
+        cout << "Zombie with danger " << danger << " is: " << found->getItem().type << endl;
+    else
+        cout << "Zombie with danger " << danger << " not found!" << endl;
+}
 
+// DISPLAY TREE (SIDEWAYS) - danger numbers only
 template <class T>
 void displayTreeHelper(BSTNode<T>* node, int level = 0)
 {
@@ -44,7 +54,7 @@ void displayTreeHelper(BSTNode<T>* node, int level = 0)
 
     displayTreeHelper(node->getRight(), level + 1);
 
-    for (int i = 0; i < level; i++) cout << "    "; // 4 spaces per level
+    for (int i = 0; i < level; i++) cout << "    ";
     cout << node->getItem() << endl;
 
     displayTreeHelper(node->getLeft(), level + 1);
@@ -84,6 +94,6 @@ void balanceBST(BinaryTree<T>& tree)
 {
     vector<T> items;
     addToArray(tree.root, items);
-    delete tree.root; // delete old unbalanced tree
+    delete tree.root;
     tree.root = buildBalanced(items, 0, items.size() - 1);
 }
