@@ -1,11 +1,11 @@
 ## Thomas
 Worked On some MD Files
 
-Created Each fILE
+Created Each file
 
 Added Content to Overview and Contrib Files
 
-Started Anaysis Page an Researched sites for Big O complexities
+Started Analysis Page and Researched sites for Big O complexities
 
 ## Vidhaeha
 Made Methods
@@ -19,9 +19,11 @@ Continuation of Main
 
 
 ## Tomas
+Studied up on BTS
+
 Drew Binary Tree for design MD File
 
-Made inital Code
+Made initial Code
 
 In Depth Walkthrough of Design.md
 
