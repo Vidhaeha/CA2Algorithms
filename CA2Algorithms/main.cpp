@@ -40,9 +40,13 @@ int main()
 
     displayTree(tree);
 
-    Zombie target(700, "");
-    BSTNode<Zombie>* found = findNode(tree.root, target);
-    if (found) cout << "\nFound zombie: " << found->getItem() << endl;
+    int searchDanger = 700;
+    BSTNode<Zombie>* found = findNode(tree.root, searchDanger);
+
+    if (found)
+        cout << "\nFound zombie with danger " << found->getItem().dangerLevel << endl;
+    else
+        cout << "\nZombie not found\n";
 
     cout << "\nRemoving danger 20...\n";
     tree.remove(Zombie(20, ""));

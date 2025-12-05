@@ -4,10 +4,8 @@
 
 using namespace std;
 
-// -----------------------------
 // BINARY SEARCH TREE CLASS
-// Supports: insert, remove, traversals
-// -----------------------------
+
 template <class T>
 class BinaryTree
 {
@@ -38,9 +36,8 @@ public:
 
 private:
 
-    // -----------------------------
+
     // INSERT HELPER
-    // -----------------------------
     BSTNode<T>* insertRec(BSTNode<T>* node, T item)
     {
         if (!node) return new BSTNode<T>(item);
@@ -53,9 +50,7 @@ private:
         return node;
     }
 
-    // -----------------------------
     // FIND MINIMUM NODE (used in deletion)
-    // -----------------------------
     BSTNode<T>* minNode(BSTNode<T>* node)
     {
         while (node->getLeft() != nullptr)
@@ -63,9 +58,7 @@ private:
         return node;
     }
 
-    // -----------------------------
     // REMOVE HELPER
-    // -----------------------------
     BSTNode<T>* removeRec(BSTNode<T>* node, T item)
     {
         if (!node) return nullptr;
@@ -88,9 +81,7 @@ private:
         return node;
     }
 
-    // -----------------------------
     // TRAVERSALS
-    // -----------------------------
     void preOrder(BSTNode<T>* node)
     {
         if (!node) return;

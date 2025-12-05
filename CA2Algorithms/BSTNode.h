@@ -2,10 +2,9 @@
 #include <iostream>
 using namespace std;
 
-// -----------------------------
 // BST NODE CLASS
 // Stores: item, left pointer, right pointer
-// -----------------------------
+
 template <class T>
 class BSTNode
 {

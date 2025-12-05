@@ -4,9 +4,7 @@
 #include "BinaryTree.h"
 using namespace std;
 
-// -----------------------------
 // ZOMBIE STRUCT
-// -----------------------------
 struct Zombie
 {
     int dangerLevel;
@@ -23,21 +21,22 @@ struct Zombie
     friend ostream& operator<<(ostream& os, const Zombie& z) { os << z.dangerLevel; return os; }
 };
 
-// -----------------------------
 // FIND NODE IN BST
-// -----------------------------
 template<class T>
-BSTNode<T>* findNode(BSTNode<T>* node, T value)
+BSTNode<T>* findNode(BSTNode<T>* node, int dangerLevel)
 {
     if (!node) return nullptr;
-    if (value == node->getItem()) return node;
-    if (value < node->getItem()) return findNode(node->getLeft(), value);
-    return findNode(node->getRight(), value);
+
+    if (node->getItem().dangerLevel == dangerLevel)
+        return node;
+    else if (dangerLevel < node->getItem().dangerLevel)
+        return findNode(node->getLeft(), dangerLevel);
+    else
+        return findNode(node->getRight(), dangerLevel);
 }
 
-// -----------------------------
 // DISPLAY TREE (SIDEWAYS)
-// -----------------------------
+
 template <class T>
 void displayTreeHelper(BSTNode<T>* node, int level = 0)
 {
@@ -59,9 +58,7 @@ void displayTree(BinaryTree<T>& tree)
     cout << "--------------------------\n";
 }
 
-// -----------------------------
 // BALANCE BST
-// -----------------------------
 template<class T>
 void addToArray(BSTNode<T>* node, vector<T>& arr)
 {
