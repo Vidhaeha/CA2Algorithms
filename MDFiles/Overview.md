@@ -33,7 +33,7 @@ Add new products or remove old ones
 
 Keep everything sorted as prices change
 
-## 🧟‍♂️ Zombie Survival Radar System(Framing The Problem)
+## 🧟‍♂️ B.R.A.I.N.S. — Binary Radar for Assessing Incoming Necrotic Severity(Framing The Problem)
 
 You’re in charge of a post-apocalyptic safe zone.
 A radar scans the wasteland and detects zombies approaching from far away.
