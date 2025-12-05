@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <chrono>
 #include "BinaryTree.h"
 #include "Utils.h"
 #include "Zombie.h"
@@ -36,40 +37,60 @@ int main()
     // Add zombies manually
     for (Zombie z : zombies)
     {
-        tree.add(z);         // BST
-        linearList.push_back(z); // Linear array
+        tree.add(z);              // BST
+        linearList.push_back(z);  // Linear array
     }
 
     cout << "\n=== Zombies In-Order (BST) ===\n";
     tree.printInOrder();
+    balanceBST(tree);
     displayTree(tree);
 
-    printZombieTypeByDanger(tree, 700);
+    int targetDanger = 760;
 
-    // Manual comparison search
-    int target = 700;
+    // BST Search
+    auto start = chrono::high_resolution_clock::now();
+    printZombieTypeByDanger(tree, targetDanger);
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    cout << "BST search took " << duration << " microseconds.\n";
+
+    // Linear Search
     cout << "\nSearching in linear array...\n";
-    int steps = 0;
+    start = chrono::high_resolution_clock::now();
     bool found = false;
     for (Zombie z : linearList)
     {
-        steps++;
-        if (z.dangerLevel == target)
+      if (z.dangerLevel == targetDanger)
         {
-            cout << "Found zombie: " << z.type << " in " << steps << " steps.\n";
+            cout << "Found zombie: " << z.type << "\n";
             found = true;
             break;
         }
     }
+    end = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    cout << "Linear search took " << duration << " microseconds.\n";
+
     if (!found)
         cout << "Zombie not found in linear array.\n";
 
+    // Remove timing
     cout << "\nRemoving danger 20 from BST...\n";
+    start = chrono::high_resolution_clock::now();
     tree.remove(Zombie(20, ""));
+    end = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    cout << "BST remove took " << duration << " microseconds.\n";
     displayTree(tree);
 
+    // Balance timing
     cout << "\nBalancing BST...\n";
+    start = chrono::high_resolution_clock::now();
     balanceBST(tree);
+    end = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    cout << "BST balance took " << duration << " microseconds.\n";
     displayTree(tree);
 
     return 0;
