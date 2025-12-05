@@ -3,10 +3,6 @@ In this section, we will explore what a Binary Search Tree (BST) is, why it is u
 
 ## What is a Binary Search Tree?
 
-A Binary Search Tree (BST) is a specialized form of a binary tree designed to store data in a way that allows fast searching, insertion, and deletion. Unlike a regular binary tree, a BST enforces ordering rules:
-
-The left child subtree of any node contains values less than the node’s value.
-
-The right child subtree contains values greater than the node’s value.
-
-This structural property enables efficient lookup—similar in spirit to binary search on a sorted array—but applied to hierarchical data rather than sequential storage.
+A Binary Search Tree (BST) is a form of a binary tree designed to store data in a way that allows fast searching, insertion, and deletion. Unlike a regular binary tree, a BST uses ordering rules:
+The left child subtree of any node has values less than the node’s value.
+The right child subtree has values greater than the node’s value.
