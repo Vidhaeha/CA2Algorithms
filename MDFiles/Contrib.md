@@ -1,5 +1,5 @@
 ## Thomas
-Worked On majority Of MD Files
+Worked On some MD Files
 Created Each fILE
 Added Content to Overview and Contrib Files
 
