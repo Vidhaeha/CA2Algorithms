@@ -28,6 +28,7 @@ The whole BST is split into two Sub-trees on every step and every Sub-tree is it
 
 ### Depth
 Depth or level is how many steps you have to take from the ROOT Node to get there.
+
 🔴ROOT Node is always 0
 
 🟠It's children are 1
