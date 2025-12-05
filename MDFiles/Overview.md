@@ -23,7 +23,7 @@ Instead of scanning every zombie, your radar follows the BST rules:
 ➡️ Right = more terrifying ones
 
 
-🧟‍♂️🧠 When is a Binary Search Tree Used?
+## 🧟‍♂️🧠 When is a Binary Search Tree Used?
 
 A Binary Search Tree is used when you need to quickly search, insert, or remove data.
 
