@@ -1,50 +1,51 @@
 #include <iostream>
 #include "BinaryTree.h"
 #include "Utils.h"
-
 using namespace std;
 
 int main()
 {
-    BinaryTree<int> tree;
+    BinaryTree<Zombie> tree;
 
-    // Insert values
-    tree.add(50);
-    tree.add(30);
-    tree.add(70);
-    tree.add(20);
-    tree.add(40);
-    tree.add(60);
-    tree.add(80);
+    Zombie zombies[] = {
+        {880,  "Hive-mind necro leader"},
+        {920,  "Berserker juggernaut"},
+        {970,  "Shadow phase assassin zombie"},
+        {999,  "Titan necromancer — controls hordes"},
+        {1000, "DO NOT ENGAGE — Apocalypse Class Entity (world ender)"},
+        {560, "Wall-climbing creeper"},
+        {640, "Acid spit mutant"},
+        {700, "Muscle-enhanced brute"},
+        {760, "Tactical stalker — moves silently"},
+        {800, "Infection thrower — spreads plague clouds"},
+        {260, "Grocery-store bargainer zombie"},
+        {310, "Fast teen runner zombie"},
+        {400, "Corner-lurking ambush zombie"},
+        {450, "Pack hunter — calls others over"},
+        {500, "Screaming sprint zombie"},
+        {20,  "Limb-dragging crawler"},
+        {45,  "Lost wanderer moaning at birds"},
+        {80,  "Freshly turned suburban dad"},
+        {120, "One-eyed shuffler"},
+        {180, "Missing-jaw groaner that can’t bite properly"}
+    };
 
-    // Traversals
-    cout << "Pre-order:  ";
-    tree.printPreOrder();
+    for (Zombie z : zombies) tree.add(z);
 
-    cout << "In-order:   ";
+    cout << "\n=== Zombies In-Order ===\n";
     tree.printInOrder();
 
-    cout << "Post-order: ";
-    tree.printPostOrder();
+    // Balance tree before displaying
+    balanceBST(tree);
 
-    // Display tree visually
     displayTree(tree);
 
-    // FIND example
-    int n = 40;
-    cout << "\nSearching for: " << n << endl;
+    Zombie target(700, "");
+    BSTNode<Zombie>* found = findNode(tree.root, target);
+    if (found) cout << "\nFound zombie: " << found->getItem() << endl;
 
-    BSTNode<int>* found = findNode(tree.root, n);
-
-    if (found)
-        cout << "Found node with value: " << found->getItem() << endl;
-    else
-        cout << "Value NOT found.\n";
-
-    // Remove example
-    cout << "\nRemoving 20...\n";
-    tree.remove(20);
-
+    cout << "\nRemoving danger 20...\n";
+    tree.remove(Zombie(20, ""));
     displayTree(tree);
 
     return 0;

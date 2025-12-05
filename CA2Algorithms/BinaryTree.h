@@ -12,7 +12,7 @@ template <class T>
 class BinaryTree
 {
 public:
-    BSTNode<T>* root; // Make root public so Utils can access
+    BSTNode<T>* root; // root pointer
 
     BinaryTree()
     {
@@ -43,8 +43,7 @@ private:
     // -----------------------------
     BSTNode<T>* insertRec(BSTNode<T>* node, T item)
     {
-        if (node == nullptr)
-            return new BSTNode<T>(item);
+        if (!node) return new BSTNode<T>(item);
 
         if (item < node->getItem())
             node->setLeft(insertRec(node->getLeft(), item));
@@ -69,30 +68,23 @@ private:
     // -----------------------------
     BSTNode<T>* removeRec(BSTNode<T>* node, T item)
     {
-        if (node == nullptr)
-            return nullptr;
+        if (!node) return nullptr;
 
         if (item < node->getItem())
             node->setLeft(removeRec(node->getLeft(), item));
-
         else if (item > node->getItem())
             node->setRight(removeRec(node->getRight(), item));
-
         else // Found node
         {
-            // Case 1: one or zero children
-            if (node->getLeft() == nullptr)
-                return node->getRight();
+            // One or zero children
+            if (!node->getLeft()) return node->getRight();
+            if (!node->getRight()) return node->getLeft();
 
-            else if (node->getRight() == nullptr)
-                return node->getLeft();
-
-            // Case 2: two children – replace with inorder successor
+            // Two children: replace with inorder successor
             BSTNode<T>* temp = minNode(node->getRight());
             node->setItem(temp->getItem());
             node->setRight(removeRec(node->getRight(), temp->getItem()));
         }
-
         return node;
     }
 
@@ -102,7 +94,7 @@ private:
     void preOrder(BSTNode<T>* node)
     {
         if (!node) return;
-        cout << node->getItem() << " ";
+        cout << node->getItem() << endl;
         preOrder(node->getLeft());
         preOrder(node->getRight());
     }
@@ -111,7 +103,7 @@ private:
     {
         if (!node) return;
         inOrder(node->getLeft());
-        cout << node->getItem() << " ";
+        cout << node->getItem() << endl;
         inOrder(node->getRight());
     }
 
@@ -120,6 +112,6 @@ private:
         if (!node) return;
         postOrder(node->getLeft());
         postOrder(node->getRight());
-        cout << node->getItem() << " ";
+        cout << node->getItem() << endl;
     }
 };
