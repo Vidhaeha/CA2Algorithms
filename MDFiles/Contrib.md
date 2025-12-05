@@ -2,6 +2,7 @@
 Worked On some MD Files
 Created Each fILE
 Added Content to Overview and Contrib Files
+Started Anaysis Page an Researched sites for Big O complexities
 
 ## Vidhaeha
 Made Methods
