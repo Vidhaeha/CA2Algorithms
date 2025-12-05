@@ -18,3 +18,17 @@ Examples:
 Search engines use BST-like structures to scan huge datasets and speed up search results.
 
 Game engines, like the original Doom, used tree structures to decide what objects to draw and where they should appear on screen.
+
+## 🕰️ When is a Binary Search Tree Used?
+
+A BST is used when you need fast searching, inserting, and deleting.
+Because of how it is organised, these operations take about O(log n) time on average, which is much faster than scanning every element.
+
+Example:
+If a website stores products and prices, a BST can help:
+
+Quickly find the highest or lowest price
+
+Add new products or remove old ones
+
+Keep everything sorted as prices change
