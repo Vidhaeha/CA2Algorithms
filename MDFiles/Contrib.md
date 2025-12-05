@@ -15,3 +15,4 @@ Continuation of Main
 ## Tomas
 Drew Binary Tree for deisgn MD File
 Made inital Code
+In Depth Walkthrough of Design.md
