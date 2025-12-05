@@ -45,7 +45,7 @@ The safe zone’s radar logs zombie threats. A BST helps by:
 🔄 Keeping all danger levels sorted as the situation changes
 (even if hundreds of zombies show up, the system still stays organised)
 
-## 🧟‍♂️ B.R.A.I.N.S. — Binary Radar for Assessing Incoming Necrotic Severity(Framing The Problem)
+## 🧟‍♂️ B.R.A.I.N.S. Binary Radar for Assessing Incoming Necrotic Severity(Framing The Problem)
 
 You’re in charge of a post-apocalyptic safe zone.
 A radar scans the wasteland and detects zombies approaching from far away.
@@ -78,11 +78,53 @@ Zombie neutralized? Remove it from the radar.
 
 🚨 Highest Threat Alert
 
-Walk to the far right node —
+Walk to the far right node 
 that's the scariest zombie currently detected.
 Point the BAZOOOKA at it. 🔥😎
 
-## 👆 Selection Rationale — Why We Chose B.R.A.I.N.S. (BST System)
+## Real-World Use Case 
+
+✔️ 1. Priority Based Incident Tracking
+
+Each incident is given a severity score.
+
+BST logic allows the system to:
+
+Insert new alerts as they appear
+
+Search for recurring threats
+
+Keep incidents sorted by severity
+
+Just like zombies with danger values but now threats are real-world events.
+
+✔️ 2. Identification of Highest Risk Events
+
+Emergency teams need to know:
+
+“What should we respond to first?”
+
+Traversing to the right-most BST node instantly highlights:
+
+The most severe cyber breach
+
+The largest fire outbreak
+
+The highest risk drone or intruder
+
+✔️ 3. Real Time Updating and Removal
+
+Incidents change:
+
+A threat may escalate 
+
+It may be resolved 
+
+New threats appear constantly
+
+BST operations make updates fast
+
+## 👆 Selection Rationale  Why We Chose B.R.A.I.N.S. (BST System)
 
 We selected the B.R.A.I.N.S. (Binary Radar for Assessing Incoming Necrotic Severity) model because it blends carries accross the point along with a fun, engaging scenario. It lets us explore Binary Search Trees in a way that feels alive — or undead.
 
