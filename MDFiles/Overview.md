@@ -1,4 +1,4 @@
-😋 Overview
+## 😋 Overview
 In this section, we will explore what a Binary Search Tree (BST) is, why it is used, and when it becomes the right choice in problem-solving. We will outline the problem it addresses, its common applications, and the reasoning behind choosing this particular data structure over others.
 
 ## What is a Binary Search Tree?
