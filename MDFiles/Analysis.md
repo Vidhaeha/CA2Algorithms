@@ -4,7 +4,7 @@ This is where we analyse the Big-O claim, measured results (time/space) and the 
 
 # Big-O
 
-In theory, binary trees usually would have `Big-O (log n)` complexity but that is only for the balanced or self balancing trees like Red-Black tree or balanced BST. An unbalanced BST could lower the performance to `Big-O (n)` complexity. Log of n is better at performing using way less resources searching for values within it. The graph shows that
+Biney trees usually would have `Big-O (log n)` complexity but that is only for the balanced or self balancing trees like Red-Black tree or balanced BST. An unbalanced BST could lower the performance to `Big-O (n)` complexity. Log of n is better at performing using way less resources searching for values within it. 
 
 
 ## Complexity Analysis
