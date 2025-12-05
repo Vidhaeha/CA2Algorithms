@@ -8,6 +8,7 @@ It's effectiveness depends heavily on the order of insertion and the structure/b
 
 ## What is it made of 
 ![Image](../Images/Nodes.png)
+
 ### ROOT Node 🔴
 The main Node which is in the middle
 
