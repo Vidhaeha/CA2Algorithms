@@ -1,108 +1,136 @@
 #pragma once
-#include <iostream>
 #include "BSTNode.h"
-
+#include <iostream>
 using namespace std;
-
-// BINARY SEARCH TREE CLASS
 
 template <class T>
 class BinaryTree
 {
+	
 public:
-    BSTNode<T>* root; // root pointer
+    BSTNode<T>* root;
 
-    BinaryTree()
-    {
-        root = nullptr;
-    }
+	// Constructors and destructor
+    BinaryTree() { root = nullptr; }
+    ~BinaryTree() { delete root; }
 
-    // Public insert
+	// Methods
     void add(T item)
     {
-        root = insertRec(root, item);
-    }
-
-    // Public remove
-    void remove(T item)
-    {
-        root = removeRec(root, item);
-    }
-
-    // Traversals
-    void printPreOrder() { preOrder(root); cout << endl; }
-    void printInOrder() { inOrder(root); cout << endl; }
-    void printPostOrder() { postOrder(root); cout << endl; }
-
-private:
-
-
-    // INSERT HELPER
-    BSTNode<T>* insertRec(BSTNode<T>* node, T item)
-    {
-        if (!node) return new BSTNode<T>(item);
-
-        if (item < node->getItem())
-            node->setLeft(insertRec(node->getLeft(), item));
-        else
-            node->setRight(insertRec(node->getRight(), item));
-
-        return node;
-    }
-
-    // FIND MINIMUM NODE (used in deletion)
-    BSTNode<T>* minNode(BSTNode<T>* node)
-    {
-        while (node->getLeft() != nullptr)
-            node = node->getLeft();
-        return node;
-    }
-
-    // REMOVE HELPER
-    BSTNode<T>* removeRec(BSTNode<T>* node, T item)
-    {
-        if (!node) return nullptr;
-
-        if (item < node->getItem())
-            node->setLeft(removeRec(node->getLeft(), item));
-        else if (item > node->getItem())
-            node->setRight(removeRec(node->getRight(), item));
-        else // Found node
+        if (root == nullptr)
         {
-            // One or zero children
-            if (!node->getLeft()) return node->getRight();
-            if (!node->getRight()) return node->getLeft();
-
-            // Two children: replace with inorder successor
-            BSTNode<T>* temp = minNode(node->getRight());
-            node->setItem(temp->getItem());
-            node->setRight(removeRec(node->getRight(), temp->getItem()));
+            root = new BSTNode<T>();
+            root->setItem(item);
         }
-        return node;
+        else root->add(item);
     }
 
-    // TRAVERSALS
-    void preOrder(BSTNode<T>* node)
+	// Remove method
+    bool remove(T item)
     {
-        if (!node) return;
-        cout << node->getItem() << endl;
-        preOrder(node->getLeft());
-        preOrder(node->getRight());
+			BSTNode<T>* toBeRemoved = root;
+			BSTNode<T>* parent = nullptr;
+			bool found = false;
+
+			while (!found && toBeRemoved != nullptr)
+			{
+
+				if (toBeRemoved->getItem() == item)
+				{
+
+					found = true;
+				}
+				else
+				{
+					parent = toBeRemoved;
+					if (toBeRemoved->getItem() > item)
+					{
+						toBeRemoved = toBeRemoved->getLeft();
+					}
+					else
+					{
+						toBeRemoved = toBeRemoved->getRight();
+					}
+				}
+			}
+			if (!found)
+				return false;
+
+			if (toBeRemoved->getLeft() == nullptr || toBeRemoved->getRight() == nullptr)
+			{
+				BSTNode<T>* newChild;
+				if (toBeRemoved->getLeft() == nullptr)
+				{
+					newChild = toBeRemoved->getRight();
+				}
+				else
+				{
+					newChild = toBeRemoved->getLeft();
+				}
+				if (parent == nullptr)
+				{
+					root = newChild;
+				}
+				else if (parent->getLeft() == toBeRemoved)
+				{
+					parent->setLeft(newChild);
+				}
+				else
+				{
+					parent->setRight(newChild);
+				}
+				return true;
+			}
+
+			BSTNode<T>* smallestParent = toBeRemoved;
+			BSTNode<T>* smallest = toBeRemoved->getRight();
+			while (smallest->getLeft() != nullptr)
+			{
+				smallestParent = smallest;
+				smallest = smallest->getLeft();
+			}
+			toBeRemoved->setItem(smallest->getItem());
+			if (smallestParent == toBeRemoved)
+			{
+				smallestParent->setRight(smallest->getRight());
+			}
+			else
+			{
+				smallestParent->setLeft(smallest->getRight());
+			}
+
+	
+
+        return false;
     }
 
-    void inOrder(BSTNode<T>* node)
+	// Print methods
+    void printInOrder() { printInOrder(root); cout << endl; }
+    void printPreOrder() { printPreOrder(root); cout << endl; }
+    void printPostOrder() { printPostOrder(root); cout << endl; }
+
+
+    void printInOrder(BSTNode<T>* node)
     {
         if (!node) return;
-        inOrder(node->getLeft());
-        cout << node->getItem() << endl;
-        inOrder(node->getRight());
+        printInOrder(node->getLeft());
+        cout << node->getItem() << " ";
+        printInOrder(node->getRight());
     }
 
-    void postOrder(BSTNode<T>* node)
+    void printPreOrder(BSTNode<T>* node)
     {
         if (!node) return;
-        postOrder(node->getLeft());
-        postOrder(node->getRight());
-        cout << node->getItem() << endl;
+        cout << node->getItem() << " ";
+        printPreOrder(node->getLeft());
+        printPreOrder(node->getRight());
+    }
+
+    void printPostOrder(BSTNode<T>* node)
+    {
+        if (!node) return;
+        printPostOrder(node->getLeft());
+        printPostOrder(node->getRight());
+        cout << node->getItem() << " ";
     }
 };

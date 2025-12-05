@@ -1,12 +1,14 @@
 #include <iostream>
 #include "BinaryTree.h"
 #include "Utils.h"
+#include "Zombie.h"
 using namespace std;
 
 int main()
 {
     BinaryTree<Zombie> tree;
 
+	// Sample zombies with various danger levels
     Zombie zombies[] = {
         {880,  "Hive-mind necro leader"},
         {920,  "Berserker juggernaut"},
@@ -20,7 +22,7 @@ int main()
         {800, "Infection thrower — spreads plague clouds"},
         {260, "Grocery-store bargainer zombie"},
         {310, "Fast teen runner zombie"},
-        {400, "Corner-lurking ambush zombie"},
+        //{400, "Corner-lurking ambush zombie"},
         {450, "Pack hunter — calls others over"},
         {500, "Screaming sprint zombie"},
         {20,  "Limb-dragging crawler"},
@@ -30,30 +32,35 @@ int main()
         {180, "Missing-jaw groaner that can’t bite properly"}
     };
 
+    cout << "\n=== B.R.A.I.N.S. ===\n";
+    cout << "Binary Search Tree of Zombie Danger Levels\n";
+
+	// Add zombies to the tree
     for (Zombie z : zombies) tree.add(z);
 
-
-    cout << "\n=== B.R.A.I.N.S. ===\n";
-
+	// Display tree before balancing
     cout << "\n=== Zombies In-Order ===\n";
     tree.printInOrder();
+	balanceBST(tree);
+    displayTree(tree);
 
-    // Balance tree before displaying
+    // Add more manually as needed
+    tree.add(Zombie(400, "Corner-lurking ambush zombie"));
     balanceBST(tree);
-
     displayTree(tree);
 
-    // Search by danger and print type
-    int searchDanger = 700;
-    printZombieTypeByDanger(tree, searchDanger);
 
-    cout << "\nRemoving danger 700...\n";
-    tree.remove(Zombie(700, ""));
+	// Test finding zombies by danger level
+    printZombieTypeByDanger(tree, 700);
 
-	// Display tree before and after balancing
-	cout << "\nTree before and after balancing:\n";
+
+	// Test removing a zombie
+    cout << "\nRemoving danger 20...\n";
+    tree.remove(Zombie(20, ""));
     displayTree(tree);
-    // Balance tree
+
+	// Re-balance after removal
+    cout << "\nBalancing tree...\n";
     balanceBST(tree);
     displayTree(tree);
 
