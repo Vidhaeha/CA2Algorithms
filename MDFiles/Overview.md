@@ -61,3 +61,39 @@ Each zombie sighting has a danger score:
 900 → Screaming mutated nightmare
 
 The higher the score, the more dangerous it is.
+
+## 🎮 Example Operations in the Game
+🧠 Search
+
+“Is there a zombie with danger score 475?”
+BST checks quickly without scanning all nodes.
+
+➕ Insert
+
+New mutation spotted? Add it to the radar tree.
+
+❌ Delete
+
+Zombie neutralized? Remove it from the radar.
+
+🚨 Highest Threat Alert
+
+Walk to the far right node —
+that's the scariest zombie currently detected.
+Point the BAZOOOKA at it. 🔥😎
+
+## 👆 Selection Rationale — Why We Chose B.R.A.I.N.S. (BST System)
+
+We selected the B.R.A.I.N.S. (Binary Radar for Assessing Incoming Necrotic Severity) model because it blends carries accross the point along with a fun, engaging scenario. It lets us explore Binary Search Trees in a way that feels alive — or undead.
+
+There are several reasons this was chosen:
+
+BSTs are foundational in computing, and truly understanding them helps in learning more advanced structures and algorithms later.
+
+The zombie radar scenario makes BST behaviour easier to visualise, turning operations like insert, delete, and search into survival decisions.
+
+It makes the topic memorable and demonstration-worthy. a zombie-themed BST project stands out for presentations and assessment work.
+
+It mirrors real-world applications, where threat detection, prioritisation systems, and real-time updates rely on tree-based data structures.
+
+Overall, B.R.A.I.N.S. was selected because it provides both strong educational value and creative appeal, making it a system worth building, studying, and showing off.
