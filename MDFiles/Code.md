@@ -1,75 +1,24 @@
 Main
 1. Data Setup
-
-An array of Zombie objects is created, each with a danger level and a type.
-
-Zombies are added to:
-
-Binary Search Tree (BST) – to allow fast, ordered searches.
-
-Linear array (vector) – to illustrate simple linear search.
-
-HashMap (unordered_map) – for constant-time average lookup.
+a collection of Zombie objects, each with a danger level and a type. These zombies are stored in a Binary Search Tree (BST), a linear array, and a hashmap to allow comparisons of different data structures.
 
 2. BST Operations
 
-Insertion (tree.add): Adds each zombie in the BST, keeping the binary search property (left < node < right).
+In the BST, zombies are added in a way that maintains the binary search property, which allows fast, ordered searches. Searching for a zombie in the BST follows the left or right branches according to the target danger level, demonstrating efficient logarithmic-time operations.
 
-Search (printZombieTypeByDanger): Traverses the BST to find a zombie by dangerLevel. This demonstrates O(log n) average-time search.
-
-Remove (tree.remove): Deletes a node from the BST, handling three cases:
-
-Node with no children (leaf)
-
-Node with one child
-
-Node with two children (replaces with in-order successor)
-
-Balance (balanceBST): Converts the BST into a balanced BST to ensure efficient future searches.
-
-Display (displayTree): Shows the tree sideways with indentation, representing depth visually.
+The BST also supports deletion, handling all possible cases: leaf nodes, nodes with one child, or nodes with two children using the in-order successor. After deletion, the BST can be balanced to maintain optimal search performance.
 
 3. Linear Array Operations
 
-Search: Iterates over the array to find the zombie with the target danger level.
-
-Counts the number of steps to find the target.
-
-Demonstrates O(n) time complexity.
-
-Delete: Finds the zombie and removes it using vector::erase.
-
-Re-add: Adds the deleted zombie back to maintain data integrity.
+The linear array stores zombies sequentially. Searching involves iterating through each element until the target is found, demonstrating linear time complexity. Deletion is handled by erasing the element from the vector, and the deleted zombie is re-added to keep the dataset consistent.
 
 4. HashMap Operations
 
-Search: Uses unordered_map::find to locate the zombie by danger level.
-
-Average time complexity O(1).
-
-Delete: Removes the zombie using unordered_map::erase.
-
-Re-add: Restores the deleted zombie using operator[].
+The hashmap allows near-constant time lookup and deletion by using the danger level as the key. Searching uses find, deletion uses erase, and re-insertion is done with operator[], illustrating the efficiency of hash-based structures.
 
 5. Timing
 
-All searches and delete operations are timed using std::chrono in microseconds, showing the efficiency difference between:
-
-BST – logarithmic time
-
-Linear array – linear time
-
-HashMap – constant average time
-
-6. Purpose
-
-Compare search efficiency across data structures.
-
-Demonstrate deletion and re-insertion in BST, array, and hashmap.
-
-Show how balancing a BST improves search performance.
-
-Visually represent the tree structure for easier understanding.
+Finally, timing measurements for all operations are taken using std::chrono in microseconds. This setup provides a clear comparison of how the choice of data structure affects search speed, deletion, and overall performance, and also visualizes the structure of the BST for better understanding.
 
 <img width="550" height="442" alt="image" src="https://github.com/user-attachments/assets/ec201b27-67cb-4bdb-a017-bf4102855e87" />
 
