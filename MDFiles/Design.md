@@ -13,6 +13,7 @@ Invalid
 ![Image](../Images/InvalidParentSmallerThenLeft.png)
 
 ## Step by step of Creating a balanced tree
+![Image](../Images/Array.png)
 ### 1)Find root node
 It is the closest number to the (lowest+highest)/2
 ![Image](../Images/BSTStep1.png)
