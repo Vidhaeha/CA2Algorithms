@@ -1,16 +1,24 @@
 # Binary Tree-In depth
-Explanation string f
+Binary Search Tree, BST in short, is such a binary tree where every node has a unique key, every Node to the left, is smaller and every Node to the right is larger.
 ## Binary tree examples
-Valid
+### Invalid
+
+#### There can't be duplicate
+![Image](../Images/InvalidDouble.png)
+#### They have to follow the correct order
+Smaller numbers on the left, bigger numbers on the right
+![Image](../Images/InvalidOrder.png)
+#### Boundary error
+Children of Left Nodes cannot be larger then their Parents
+Children of Right Nodes cannot be smaller then their Parents
+![Image](../Images/InvalidParentSmallerThenLeft.png)
+
+### Valid
 
 ![Image](../Images/ValidFullTree.png)
 ![Image](../Images/ValidLineTree.png)
 ![Image](../Images/ValidDoubleLineTree.png)
-Invalid
 
-![Image](../Images/InvalidDouble.png)
-![Image](../Images/InvalidOrder.png)
-![Image](../Images/InvalidParentSmallerThenLeft.png)
 
 ## Step by step of Creating a balanced tree
 ![Image](../Images/Array.png)
