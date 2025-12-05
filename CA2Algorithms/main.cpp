@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 #include <chrono>
 #include "BinaryTree.h"
 #include "Utils.h"
@@ -46,7 +47,7 @@ int main()
     balanceBST(tree);
     displayTree(tree);
 
-    int targetDanger = 760;
+    int targetDanger = 970;
 
     // BST Search
     auto start = chrono::high_resolution_clock::now();
@@ -54,16 +55,20 @@ int main()
     auto end = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
     cout << "BST search took " << duration << " microseconds.\n";
+   
+    balanceBST(tree);
 
     // Linear Search
     cout << "\nSearching in linear array...\n";
     start = chrono::high_resolution_clock::now();
     bool found = false;
+    int steps = 0;
     for (Zombie z : linearList)
     {
-      if (z.dangerLevel == targetDanger)
+        steps++;
+        if (z.dangerLevel == targetDanger)
         {
-            cout << "Found zombie: " << z.type << "\n";
+            cout << "Found zombie: " << z.type << " in " << steps << " steps.\n";
             found = true;
             break;
         }
@@ -75,16 +80,70 @@ int main()
     if (!found)
         cout << "Zombie not found in linear array.\n";
 
-    // Remove timing
-    cout << "\nRemoving danger 20 from BST...\n";
+    // Linear Delete + Re-add
+    cout << "\nDeleting danger " << targetDanger << " from linear array...\n";
     start = chrono::high_resolution_clock::now();
-    tree.remove(Zombie(20, ""));
+    found = false;
+    for (auto it = linearList.begin(); it != linearList.end(); ++it)
+    {
+        if (it->dangerLevel == targetDanger)
+        {
+            linearList.erase(it);
+            found = true;
+            break;
+        }
+    }
+    end = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    if (found)
+        cout << "Deleted from linear array in " << duration << " microseconds.\n";
+    else
+        cout << "Zombie not found in linear array.\n";
+
+    // Re-add to linear array
+    linearList.push_back(Zombie(targetDanger, "Tactical stalker — moves silently"));
+    balanceBST(tree);
+
+    // Hashmap setup
+    unordered_map<int, Zombie> zombieMap;
+    for (Zombie z : linearList)
+        zombieMap[z.dangerLevel] = z;
+
+    // Hashmap Search
+    cout << "\nSearching in hashmap...\n";
+    start = chrono::high_resolution_clock::now();
+    auto it = zombieMap.find(targetDanger);
+    end = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    if (it != zombieMap.end())
+        cout << "Found zombie: " << it->second.type << " using hashmap in " << duration << " microseconds.\n";
+    else
+        cout << "Zombie not found in hashmap.\n";
+
+    // Hashmap Delete + Re-add
+    cout << "\nDeleting danger " << targetDanger << " from hashmap...\n";
+    start = chrono::high_resolution_clock::now();
+    size_t erased = zombieMap.erase(targetDanger);
+    end = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    if (erased > 0)
+        cout << "Deleted from hashmap in " << duration << " microseconds.\n";
+    else
+        cout << "Zombie not found in hashmap.\n";
+
+    // Re-add to hashmap
+    zombieMap[targetDanger] = Zombie(targetDanger, "Tactical stalker — moves silently");
+    balanceBST(tree);
+    // Remove from BST
+    cout << "\nRemoving danger 970 from BST...\n";
+    start = chrono::high_resolution_clock::now();
+    tree.remove(Zombie(970, ""));
     end = chrono::high_resolution_clock::now();
     duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
     cout << "BST remove took " << duration << " microseconds.\n";
     displayTree(tree);
 
-    // Balance timing
+    // Balance BST
     cout << "\nBalancing BST...\n";
     start = chrono::high_resolution_clock::now();
     balanceBST(tree);
