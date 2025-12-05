@@ -6,7 +6,7 @@ Created Each file
 Added Content to Overview and Contrib Files
 
 Started Analysis Page and Researched sites for Big O complexities
-# References
+# Reflection
 Being absent made it harder to contribute towards the project, making us swamped with alot of work and such, so Working in a team under deadline pressure taught me the importance of communication, organisation, and proper usag of  GitHub and Markdownn. 
 
 ## Vidhaeha
