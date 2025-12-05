@@ -1,6 +1,7 @@
 ## Thomas
 Worked On majority Of MD Files
-
+Created Each fILE
+Added Content to Overview and Contrib Files
 
 ## Vidhaeha
 Made Methods
