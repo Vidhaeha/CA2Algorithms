@@ -7,31 +7,43 @@ A Binary Search Tree (BST) is a form of a binary tree designed to store data in 
 The left child subtree of any node has values less than the node’s value.
 The right child subtree has values greater than the node’s value.
 
-## Why Use a Binary Search Tree? 😵‍💫
+## 🌳 Why Use a Binary Search Tree?
 
-A Binary Search Tree is useful when you have a lot of data that needs to stay sorted and you want to find things quickly.
+A BST lets you store zombies by their danger level, so you can:
 
-Instead of checking every item one by one, a BST narrows the search path step-by-step. This makes searching, adding, and removing data much faster.
+Quickly find the most dangerous threats
 
-Examples:
+Insert new zombie sightings fast
 
-Search engines use BST-like structures to scan huge datasets and speed up search results.
+Remove cleared threats without reshuffling a whole list
 
-Game engines, like the original Doom, used tree structures to decide what objects to draw and where they should appear on screen.
+Instead of scanning every zombie, your radar follows the BST rules:
 
-## 🕰️ When is a Binary Search Tree Used?
+➡️ Left = less scary zombies
+➡️ Right = more terrifying ones
 
-A BST is used when you need fast searching, inserting, and deleting.
-Because of how it is organised, these operations take about O(log n) time on average, which is much faster than scanning every element.
 
-Example:
-If a website stores products and prices, a BST can help:
+🧟‍♂️🧠 When is a Binary Search Tree Used?
 
-Quickly find the highest or lowest price
+A Binary Search Tree is used when you need to quickly search, insert, or remove data.
 
-Add new products or remove old ones
+Because of how a BST stores information, it can perform these tasks in O(log n) time on average, which is much faster than checking every record one by one, important when the zoombies are running at you.
 
-Keep everything sorted as prices change
+Example in the B.R.A.I.N.S. System:
+
+The safe zone’s radar logs zombie threats. A BST helps by:
+
+🧟‍♂️ Quickly finding the most dangerous zombie
+
+
+➕ Adding new threats as they appear
+(when scouts spot a new zombie, it enters the survival tree)
+
+❌ Removing cleared threats
+(once soldiers eliminate a zombie, it gets removed from the tree)
+
+🔄 Keeping all danger levels sorted as the situation changes
+(even if hundreds of zombies show up, the system still stays organised)
 
 ## 🧟‍♂️ B.R.A.I.N.S. — Binary Radar for Assessing Incoming Necrotic Severity(Framing The Problem)
 
