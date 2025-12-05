@@ -2,29 +2,35 @@
 ## What is it?
 Binary Search Tree, BST in short, is such a binary tree where every node has a unique key, every Node to the left, is smaller and every Node to the right is larger.
 This set-up makes it very effective for quick search, addition and deletion of items.
+It's effectiveness depends heavily on the order of insertion and the structure/balance of it.
 
 ## What is it made of 
-
-### ROOT Node
+![Image](../Images/Nodes.png)
+### ROOT Node 🔴
 The main Node which is in the middle
-[ROOT NODE img]
 
-### Parent Nodes
+### Parent Nodes 🔴🟠
 All of the Nodes that have other Nodes under them
-[Parent Nodes img]
 
-### Children Nodes
+### Children Nodes 🟠🟢
 Every Node apart from the ROOT Node are children Nodes of another Node. They are always to the left or right of the Parent Node depending on if they are smaller or larger.
-[Children Nodes img]
+
+### Leaf Nodes 🟢
+Leaf Nodes are the opposite of Parent Nodes, they are the very bottom of each Sub-tree and have no Node under them.
 
 ### Sub-trees
 The whole BST is split into two Sub-trees on every step and every Sub-tree is its own always halfed BST. The values from a Sub-tree to the left can never be larger then the values of a Sub-tree to the right and also the other way around.
-[Sub-tree img]
+![Image](../Images/Sub-trees1.png)
+![Image](../Images/Sub-trees2.png)
 
-### Leaf Nodes
-Leaf Nodes are the opposite of Parent Nodes, they are the very bottom of each Sub-tree and have no Node under them.
-[Leaf Nodes img]
-
+### Depth
+Depth or level is how many steps you have to take from the ROOT Node to get there.
+🔴ROOT Node is always 0
+🟠It's children are 1
+🟡Their children are 2
+🟢3
+Etc.
+![Image](../Images/BTSDepth.png)
 ## Binary tree examples
 ### Invalid
 
@@ -38,7 +44,7 @@ Smaller numbers on the left, bigger numbers on the right
 #### Boundary error
 Children of Left Nodes cannot be larger then their Parents
 Children of Right Nodes cannot be smaller then their Parents
-![Image](../Images/InvalidParentSmallerThenLeft.png)
+![Image](../Images/InvalidParentSmallerThenRight.png)
 
 ### Valid
 
