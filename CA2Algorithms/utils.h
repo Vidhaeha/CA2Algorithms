@@ -1,108 +1,54 @@
 #pragma once
-#include <string>
 #include <iostream>
-//Hi
-// Forward declarations
-template<class T> class BinaryTree;
-template<class T> class BSTNode;
+#include "BinaryTree.h"
 
 using namespace std;
 
-//Pretty printing
+// -----------------------------
+// FIND NODE (BST SEARCH)
+// -----------------------------
 template<class T>
-void printBT(const string& prefix, BSTNode<T>* node, bool isLeft)
+BSTNode<T>* findNode(BSTNode<T>* node, T value)
 {
-	if (node != nullptr)
-	{
-		cout << prefix;
-		cout << (isLeft ? "<-- " : "--> ");
-		//printing the values
-		cout << node->getItem() << endl;
-		//enter the next level
-		printBT(prefix + (isLeft ? "|   " : "    "), node->getLeft(), true);
-		printBT(prefix + (isLeft ? "|   " : "    "), node->getRight(), false);
-	}
+    if (node == nullptr)
+        return nullptr;
+
+    if (value == node->getItem())
+        return node;
+
+    if (value < node->getItem())
+        return findNode(node->getLeft(), value);
+
+    return findNode(node->getRight(), value);
 }
 
-//Recursive function to add each element when balancing a binary search tree
-template<class T>
-void createBalancedTree(BinaryTree<T>& tree, int start, int end, T* arr)
+// -----------------------------
+// DISPLAY TREE (simple sideways print)
+// -----------------------------
+template <class T>
+void displayRec(BSTNode<T>* node, int depth)
 {
-	if (start < end)
-	{
-		int mid = (start + end) / 2;
-		tree.add(arr[mid]);
-		createBalancedTree(tree, start, mid, arr);
-		createBalancedTree(tree, mid + 1, end, arr);
-	}
+    if (node == nullptr)
+        return;
+
+    // Print right subtree first
+    displayRec(node->getRight(), depth + 1);
+
+    // Indent based on depth
+    for (int i = 0; i < depth; i++)
+        cout << "    ";
+
+    // Print value
+    cout << node->getItem() << endl;
+
+    // Print left subtree
+    displayRec(node->getLeft(), depth + 1);
 }
 
-//Recursive function used to balance a binary search tree
 template<class T>
-void balance(BinaryTree<T>& tree) {
-	T* arr = tree.toArray();
-	int n = tree.count();
-	tree.clear();
-	createBalancedTree(tree, 0, n, arr);
-	delete[] arr;
-}
-
-struct Item
+void displayTree(BinaryTree<T>& tree)
 {
-	int skuCode = 0;
-	float price = 0.0f;
-	int stock = 0;
-
-	//Constructors
-	Item() {}
-
-	Item(int sku, float p, int s)
-	{
-		this->skuCode = sku;
-		this->price = p;
-		this->stock = s;
-	}
-
-	friend ostream& operator<<(ostream& os, const Item& item)
-	{
-		os << "SKU: " << item.skuCode << ", Price: " << item.price << ", Stock: " << item.stock;
-		return os;
-	}
-
-	bool operator<(const Item& other) const
-	{
-		return this->skuCode < other.skuCode;
-	}
-
-	bool operator>(const Item& other) const
-	{
-		return this->skuCode > other.skuCode;
-	}
-
-	bool operator==(const Item& other) const
-	{
-		return this->skuCode == other.skuCode;
-	}
-
-	//Overloading operator for adding stock
-	Item operator++()
-	{
-		this->stock += 1;
-		return *this;
-	}
-
-	//Overloading operator for reducing stock
-	Item operator--()
-	{
-		if (this->stock > 0)
-			this->stock -= 1;
-		return *this;
-	}
-
-	//Printing
-	ostream& print(ostream& os) const
-	{
-		os << "SKU: " << skuCode << ", Price: " << price << ", Stock: " << stock;
-		return os;
-	}
-};
+    cout << "\n--- Tree Structure ---\n";
+    displayRec(tree.root, 0);
+    cout << "----------------------\n";
+}

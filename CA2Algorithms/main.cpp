@@ -1,42 +1,51 @@
 #include <iostream>
 #include "BinaryTree.h"
-#include "BSTNode.h"
 #include "Utils.h"
 
 using namespace std;
 
 int main()
 {
-	//hi
-	BinaryTree<int> tree;
-	tree.add(50);
-	tree.add(30);
-	tree.add(70);
-	tree.add(20);
-	tree.add(40);
-	tree.add(60);
-	tree.add(80);
-	
-	cout << "Original tree (pre-order): ";
-	tree.printPreOrder();
-	cout << "Original tree (post-order): ";
-	tree.printPostOrder();
-	cout << "Original tree (in-order): ";
-	tree.printInOrder();
+    BinaryTree<int> tree;
 
-	cout << "Balanced tree (in-order): ";
-	balance(tree);
-	printBT("", tree.root, false);
+    // Insert values
+    tree.add(50);
+    tree.add(30);
+    tree.add(70);
+    tree.add(20);
+    tree.add(40);
+    tree.add(60);
+    tree.add(80);
 
-	//Find item
+    // Traversals
+    cout << "Pre-order:  ";
+    tree.printPreOrder();
 
-	//Display
+    cout << "In-order:   ";
+    tree.printInOrder();
 
-	//Load from file
+    cout << "Post-order: ";
+    tree.printPostOrder();
 
-	tree.remove(20);
-	cout << "Tree after removing 20: ";
-	printBT("", tree.root, false);
+    // Display tree visually
+    displayTree(tree);
 
-	return 0;
+    // FIND example
+    int n = 40;
+    cout << "\nSearching for: " << n << endl;
+
+    BSTNode<int>* found = findNode(tree.root, n);
+
+    if (found)
+        cout << "Found node with value: " << found->getItem() << endl;
+    else
+        cout << "Value NOT found.\n";
+
+    // Remove example
+    cout << "\nRemoving 20...\n";
+    tree.remove(20);
+
+    displayTree(tree);
+
+    return 0;
 }
