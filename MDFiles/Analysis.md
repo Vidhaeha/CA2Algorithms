@@ -5,7 +5,7 @@ This is where we analyse the Big-O claim, measured results (time/space) and the 
 # Big-O
 
 Biney trees usually would have `Big-O (log n)` complexity, but that is only for the balanced or self-balancing trees like the Red-Black tree or the balanced BST. An unbalanced BST could lower the performance to `Big-O (n)` complexity. Log of n is better at performing using way less resources, searching for values within it. 
-![image](../Images/BigO.png)
+![image](../Images/BigO2.png)
 
 ## Complexity Analysis
 "Searching: For searching element 1, we have to traverse elements (in order 5, 4, 1) = 3 = log2n. Therefore, searching in the AVL tree has worst-case complexity of O(log2n).
