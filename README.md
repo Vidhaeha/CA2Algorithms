@@ -8,3 +8,6 @@
 | [[Analysis]](./MDFiles/4.Analysis.md)             | Big-O claims and measured results (time/space)    |
 | [[Contribution]](./MDFiles/5.Contrib.md)       | Who did what; short reflections                   |
 | [[References]](./MDFiles/6.References.md)          |    Sources/attributions                              |
+
+# VidePresentation Link
+https://1drv.ms/v/c/cb74c316a90a750f/ESvufaF4D7RPmE3aWsbNVxMBPqdDeZunvVn3mlCHzlUZQQ?e=OiIspt
